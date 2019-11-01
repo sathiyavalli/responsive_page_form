@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sample website</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="../css/custom.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+       $('.form-signin').submit(function(e) {
+            e.preventDefault();
+            $(".alert-success.login").show(); 
+        });   
+       	$(".form-signup").submit(function(e){
+       		e.preventDefault();
+       		var pass = $("#inputPasswordSignup").val();
+            var confirmPassword = $("#inputConfirmPassword").val();
+            if (pass != confirmPassword) {
+             $(".error-msg").show(); 
+              setTimeout(reset,2000);
+            }
+            else{
+              $(".alert-success.sucess").show();          
+              setTimeout(fadeout,2000);
+            }
+        function reset(){
+        	$(".form-signup").trigger("reset"); 
+        	$(".error-msg").hide();        
+        }
+        function fadeout(){
+        	$(".alert-success.sucess").fadeTo("slow",0);  
+        	$("#myModal").fadeTo("slow",0);        
+        	$(".modal-backdrop.show").fadeTo("slow",0);
+        	location.reload();
+        }
+       	});
+   });
+	</script>
+ </head>
+<body class="body_bg">
+	<!--header part-->
+	<div class="container-fluid header bg-light border-bottom px-2 py-2">
+    <!--Row with three equal columns-->
+<div class="row">
+    <div class="col-sm-4 col-sm-pull-3 col-4 text-left">Logo</div>
+    <div class="col-sm-7 col-sm-pull-4 col-7 col-pull-4 text-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  		Sign Up
+		</button>
+	</div>
+    </div>
+</div>
+<div class="alert alert-success alert-dismissible login">
+    <strong>Success!</strong> You have logged in Sucessfully.
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+<!--form section-->
+<div class="container text-center col-sm-5 col-sm-pull-7 col-10 col-pull-1 mt-3 form_main border rounded">
+   <form class="form-signin col-sm-12 col-12">
+  <h1 class="h3 mb-4 font-weight-bold mt-4">Sign in</h1>
+  <label for="inputUser" class="sr-only">Username</label>
+  <input type="text" id="inputUser" class="form-control mb-3" placeholder="Username" required="" autofocus="">
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+  <div class="checkbox remember-me text-left py-3 pb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block mb-4 login_btn" type="submit">Login</button>
+</form>
+</div>
+<!-- signup modal form-->
+
+<div class="alert alert-danger alert-dismissible error">
+    <strong>Password mismatches.</strong>.
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    	<div class="alert alert-success alert-dismissible sucess">
+    		<strong>Success!</strong> You have registered Sucessfully.
+	</div>
+      <div class="modal-header">
+      	<h1 class="h3 text-center font-weight-bold px-4">Sign Up</h1>
+        <button type="button" class="close text-right" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="form-signup col-sm-12 col-12" id="form-signup">
+  			<label for="inputEmail" class="sr-only">Email address</label>
+  			<input type="Email" id="inputEmail" class="form-control mb-3" placeholder="Email address" required="" autofocus="">
+  			<label for="inputUser" class="sr-only">Username</label>
+  			<input type="text" id="inputUser" class="form-control mb-3" placeholder="Username" required="" autofocus="">
+  			 <label for="inputPasswordSignup" class="sr-only">Password</label>
+  			 <input type="password" id="inputPasswordSignup" class="form-control mb-3" placeholder="Password" required="">
+  		     <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+  			  <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required="">
+  			  <div class="error-msg red">Password mismatches</div>
+     <button class="btn btn-lg btn-primary btn-block mt-3 signup_btn" type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+ </div>
+
+</body>
+</html>
