@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.header{
+	background: #f2f2f2;
+}
+.row{
+	margin: 0 !important;
+}
+.alert-success,.alert-danger,.error-msg{
+	display: none;
+}
+.form_main{
+	box-shadow: 0px 10px 30px -30px #40454d;
+}
+.body_bg{
+	background: #f9f9fa;
+}
+@font-face {
+  font-family: opensansFont;
+  src: url(..fonts/OpenSans-Regular.ttf);
+}
+.body_bg{
+	letter-spacing: 0.5px;
+}
+.red{
+	color:tomato;
+}
+.login_btn,.signup_btn{
+	font-size: 15px !important;
+}
